@@ -10,7 +10,7 @@ namespace FoodRepositoryServiceDemo.Repositories
     {
         Task<List<FoodItem>> GetAllSold ();
         Task<FoodItem> GetId(int id);
-        Task<FoodItem> InsertItem (FoodItem foodItem);
+        Task<FoodItem> InsertItem (FoodItem item);
         Task DeleteItem (int id);
     }
 }

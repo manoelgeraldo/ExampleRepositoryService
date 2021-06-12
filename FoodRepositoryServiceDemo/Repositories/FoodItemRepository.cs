@@ -28,15 +28,11 @@ namespace FoodRepositoryServiceDemo.Repositories
             var item = await _context.FoodItems.FirstOrDefaultAsync(f => f.ID == id);
             return item;
         }
-        public async Task<FoodItem> InsertItem(FoodItem NewItem)
+        public async Task<FoodItem> InsertItem(FoodItem item)
         {
-            if (NewItem.ID == 0)
-            {
-                await _context.FoodItems.AddAsync(NewItem);
-                await _context.SaveChangesAsync();
-            }
+            await _context.FoodItems.AddAsync(item);
+            await _context.SaveChangesAsync();
             
-            return NewItem;           
         }
         public async Task DeleteItem(int id)
         {

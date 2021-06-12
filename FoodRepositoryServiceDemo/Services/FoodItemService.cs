@@ -52,18 +52,20 @@ namespace FoodRepositoryServiceDemo.Services
 
         }
 
-        public async Task<FoodItemViewModel> InsertItem(FoodItemViewModel NewItem)
+        public async Task<FoodItemViewModel> InsertItem(FoodItemViewModel item)
         {
             var Item = new FoodItemViewModel
             {
-                ID = NewItem.ID,
-                Name = NewItem.Name,
-                SalePrice = NewItem.SalePrice,
-                UnitPrice = NewItem.UnitPrice,
-                Quantity = NewItem.Quantity
+                ID = item.ID,
+                Name = item.Name,
+                SalePrice = item.SalePrice,
+                UnitPrice = item.UnitPrice,
+                Quantity = item.Quantity
             };
-            
-            return Item;
+
+            var NewItem = _foodIntemRepository.GetId(Item.ID);
+
+            await _foodIntemRepository.InsertItem(NewItem);
         }
 
         public async Task DeleteItem(int id)
